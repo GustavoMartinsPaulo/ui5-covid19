@@ -1,0 +1,38 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "sap.ui.covid",
+		"type": "application",
+		"title": "COVID-19 Report",
+		"description": "Informative Analytic Map with COVID-19 cases report around the globe.",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.ui.covid.view.V",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60",
+			"libs": {
+				"sap.m": {}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "",
+		"_version": "1.1.0"
+	}
+}
