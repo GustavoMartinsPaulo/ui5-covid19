@@ -8,13 +8,25 @@ sap.ui.define([
 	return UIComponent.extend("sap.ui.covid.Component", {
 		metadata : {
             manifest: "json"
-      },
+    	},
 		
-		Init: function() {
+		init: function() {
+			UIComponent.prototype.init.apply(this, arguments);
+			
+			this.getRouter().initialize();
+			
 			// set the device model
 			var oDeviceModel = new JSONModel(Device);
 			oDeviceModel.setDefaultBindingMode("OneWay");
-			this.getView().setModel(oDeviceModel, "device");
+			this.setModel(oDeviceModel, "device");
+			
+			// var oGlobeCases = {
+			// 	regions: []
+			// };
+			
+			// var oModel = new JSONModel(oGlobeCases);
+			// this.setModel(oModel);
+			
 		}
 	});
 });

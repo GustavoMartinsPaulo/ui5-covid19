@@ -29,7 +29,30 @@
 			"libs": {
 				"sap.m": {}
 			}
-		}
+		},
+      "routing": {
+         "config": {
+            "routerClass": "sap.m.routing.Router",
+            "viewType": "XML",
+            "viewPath": "sap.ui.covid.view",
+            "controlId": "app",
+            "controlAggregation": "pages",
+            "transition": "slide",
+            "async": true
+         },
+         "routes": [{
+            "pattern": "",
+            "name": "appHome",
+            "target": "home"
+         }],
+         "targets": {
+            "home": {
+               "viewId": "home",
+               "viewName": "Home",
+               "viewLevel" : 1
+            }
+         }
+      }
 	},
 	"sap.platform.hcp": {
 		"uri": "",
