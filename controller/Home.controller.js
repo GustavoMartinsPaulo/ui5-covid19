@@ -1,7 +1,8 @@
 sap.ui.define([
    "sap/ui/covid/controller/BaseController",
-   "sap/ui/model/json/JSONModel"
-], function (BaseController, JSONModel) {
+   "sap/ui/model/json/JSONModel",
+   "sap/ui/core/Fragment"
+], function (BaseController, JSONModel, Fragment) {
    "use strict";
 
    return BaseController.extend("sap.covid.controller.Home", {
@@ -44,6 +45,9 @@ sap.ui.define([
 		var oModel = new JSONModel(oGlobeCases);
 		this.getView().setModel(oModel);
 		this.getView().getModel().setSizeLimit(300);
+		
+		var oDetailModel = new JSONModel();
+		this.getView().setModel(oDetailModel, "details");
 		
 		oModel.attachRequestCompleted(this.onRequestCompleted, this);
    	},
@@ -92,15 +96,56 @@ sap.ui.define([
    			});
    			
    		}
-   		//debugger
    		this.getView().getModel().setProperty("/regions", oCountries);
-   		debugger
    	},
    	
    	onRegionClick: function (e) {
    		
-		sap.m.MessageToast.show("onRegionClick " + e.getParameter("code"));
-			
+		//sap.m.MessageToast.show("onRegionClick " + e.getParameter("code"));
+		
+		var sCode = e.getParameter("code");
+		var iCountryCount = parseInt(this.getView().getModel().getProperty("/Countries").length, 10);
+		
+		for(var i = 0; i < iCountryCount; i++){
+			var sCountryCode = this.getView().getModel().getProperty("/Countries/" + i + "/CountryCode");
+			if(sCountryCode === sCode){
+				var oDetails = {
+					name:this.getView().getModel().getProperty("/Countries/" + i + "/Country"),
+	   				code:this.getView().getModel().getProperty("/Countries/" + i + "/CountryCode"),
+	   				slug:this.getView().getModel().getProperty("/Countries/" + i + "/Slug"),
+	   				newConfirmed:this.getView().getModel().getProperty("/Countries/" + i + "/NewConfirmed"),
+	   				totalConfirmed:this.getView().getModel().getProperty("/Countries/" + i + "/TotalConfirmed"),
+	   				newDeaths:this.getView().getModel().getProperty("/Countries/" + i + "/NewDeaths"),
+	   				totalDeaths:this.getView().getModel().getProperty("/Countries/" + i + "/TotalDeaths"),
+	   				newRecovered:this.getView().getModel().getProperty("/Countries/" + i + "/NewRecovered"),
+	   				totalRecovered:this.getView().getModel().getProperty("/Countries/" + i + "/TotalRecovered")
+				};
+				this.getView().getModel("details").setProperty("/", oDetails);
+				break;
+			}
+		}
+		
+		var oView = this.getView();
+
+			// create dialog lazily
+			if (!this.byId("detailsDialog")) {
+				// load asynchronous XML fragment
+				Fragment.load({
+					id: oView.getId(),
+					name: "sap.ui.covid.view.DetailsDialog",
+					controller:this
+				}).then(function (oDialog) {
+					// connect dialog to the root view of this component (models, lifecycle)
+					oView.addDependent(oDialog);
+					oDialog.open();
+				});
+			} else {
+				this.byId("detailsDialog").open();
+			}	
+	},
+	
+	onCloseDialog : function () {
+		this.byId("detailsDialog").close();
 	},
 
 	onRegionContextMenu: function (e) {

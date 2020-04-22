@@ -1,0 +1,76 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:l="sap.ui.layout"
+   xmlns:f="sap.ui.layout.form">
+   <Dialog
+      id="detailsDialog"
+      title="{details>/name}">
+	   	<VBox class="sapUiSmallMargin">
+			<f:Form id="FormDisplay354wideDual"
+				editable="false">
+				<f:layout>
+					<f:ResponsiveGridLayout
+						labelSpanXL="4"
+						labelSpanL="3"
+						labelSpanM="4"
+						labelSpanS="12"
+						adjustLabelSpan="false"
+						emptySpanXL="0"
+						emptySpanL="4"
+						emptySpanM="0"
+						emptySpanS="0"
+						columnsXL="2"
+						columnsL="1"
+						columnsM="1"
+						singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer title="News">
+						<f:formElements>
+							<f:FormElement label="New confirmed cases">
+								<f:fields>
+									<Text text="{details>/newConfirmed}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="New recovered cases">
+								<f:fields>
+									<Text text="{details>/newRecovered}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="New Deaths">
+								<f:fields>
+									<Text text="{details>/newDeaths}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer title="Statistics">
+						<f:formElements>
+							<f:FormElement label="Total confirmed cases">
+								<f:fields>
+									<Text text="{details>/totalConfirmed}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Total recovered cases">
+								<f:fields>
+									<Text text="{details>/totalRecovered}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Total Deaths">
+								<f:fields>
+									<Text text="{details>/totalDeaths}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</VBox>
+		<beginButton>
+			<Button
+				text="Back"
+				press=".onCloseDialog"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>
