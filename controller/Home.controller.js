@@ -146,6 +146,8 @@ sap.ui.define([
 	
 	onCloseDialog : function () {
 		this.byId("detailsDialog").close();
+		debugger
+		this.byId("vbi").focus();
 	},
 
 	onRegionContextMenu: function (e) {

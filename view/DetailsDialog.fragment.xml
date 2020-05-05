@@ -7,7 +7,7 @@
       id="detailsDialog"
       title="{details>/name}">
 	   	<VBox class="sapUiSmallMargin">
-			<f:Form id="FormDisplay354wideDual"
+			<f:Form id="detailsForm"
 				editable="false">
 				<f:layout>
 					<f:ResponsiveGridLayout

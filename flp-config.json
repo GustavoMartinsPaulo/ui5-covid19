@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "COVID-19 Report",
+        "description": "The application shows the Map colored based on number of confirmed COVID-19 cases and provide details about each country.",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#ui5covid19-Display",
+        "navigationComponentName": "sap.ui.covid",
+        "intentSemanticObject": "ui5-covid19",
+        "intentAction": "Display",
+        "html5ApplicationName": "ui5covid19",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "cbf04059-495b-4477-b73c-07c3612769c9"
+        ],
+        "contentPackages": [
+            "985cff4f-6948-43a0-a233-b932d1073255"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "COVID-19 Report",
+        "subtitle": "Check the number of cases per country on the map graph.",
+        "searchKeywords": "COVID-19 Report,Check the number of cases per country on the map graph.",
+        "displayIconUrl": "sap-icon://geographic-bubble-chart",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

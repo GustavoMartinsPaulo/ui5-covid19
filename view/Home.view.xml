@@ -7,7 +7,7 @@
 			<l:flexContent>
 				<vbm:AnalyticMap id="vbi" width="100%" xmlns:l="sap.ui.layout" height="100%"
 					initialPosition="0;10;0" regionClick="onRegionClick"
-					regionContextMenu="onRegionContextMenu" regions="{/regions}">
+					regionContextMenu="onRegionContextMenu" allowKeyEventRepeat="false" regions="{/regions}">
 					<vbm:regions>
 						<vbm:Region code="{code}" color="{color}" tooltip="{name}" />
 					</vbm:regions>
